@@ -1,4 +1,7 @@
 import React from "react";
+
+import CoinView from './dashboardCoinView'
+
 import STUBDATA from '../../common/stubdata';
 
 const Dashboard = () => {
@@ -16,14 +19,7 @@ const Dashboard = () => {
 				<tbody>
 				{STUBDATA.map(coin => {
 					return (
-						<tr>
-							<th scope="row">{coin.cmc_rank}</th>
-							<td>{coin.name}</td>
-							<td>{coin.quote.USD.price}</td>
-							<td>{coin.quote.USD.percent_change_24h}</td>
-							<td>{coin.quote.USD.market_cap}</td>
-							<td>{coin.quote.USD.volume_24h}</td>
-						</tr>
+						<CoinView coin={coin}/>
 					)
 				})}
 				</tbody>
