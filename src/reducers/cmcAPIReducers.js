@@ -1,4 +1,4 @@
-import {CMC_API_CALL_TYPES} from 'actions/types'
+import {CMC_API_CALL_TYPES} from '../actions/types'
 
 const initalState = {isRequesting: false};
 

@@ -8,11 +8,11 @@ import {getCMCData} from '../../../actions';
 
 /**
  * An element that triggers middleware and shows if data is loaded
- * @param loading {Boolean} - describes if data is loading, to show/hide loading gif
+ * @param isRequesting {Boolean} - describes if data is isRequesting, to show/hide loading gif
  * @param getCoinsData {Function} - action, that triggers CoinsData change
  * @constructor
  */
-const UnconnectedCoinsSelect = ({loading, getCoinsData}) => {
+const CoinsSelect = ({isRequesting, getCoinsData}) => {
 	const options = [
 		{value: 10, label: 'First 10 coins'},
 		{value: 20, label: 'First 20 coins'},
@@ -33,36 +33,35 @@ const UnconnectedCoinsSelect = ({loading, getCoinsData}) => {
 		<>
 			<div className='selectContainer'>
 				<Select
-					className={'coinsSelect' + (loading ? ' disabled' : '')}
+					className={'coinsSelect' + (isRequesting ? ' disabled' : '')}
 					value={selectedOption}
 					onChange={handleCoinsSelectChange}
 					options={options}
 				/>
 
-				<Loader loading={loading}/>
+				<Loader loading={isRequesting}/>
 			</div>
 		</>
 	);
 };
 
 const mapStateToProps = (state) => {
-	const {isLoading} = state.cmcListCallReducer;
-	return {isLoading};
+	const {isRequesting} = state.cmcListCallReducer;
+	return {isRequesting};
 };
 
 const mapDispatchToProps = {
 	getCoinsData: getCMCData
 };
 
-UnconnectedCoinsSelect.defaultProps = {
-	loading: false
+CoinsSelect.defaultProps = {
+	isRequesting: false
 };
 
-UnconnectedCoinsSelect.propTypes = {
-	loading: PropTypes.bool.isRequired,
+CoinsSelect.propTypes = {
+	isRequesting: PropTypes.bool.isRequired,
 	getCoinsData: PropTypes.func.isRequired
 };
 
-const CoinsSelect = connect(mapStateToProps, mapDispatchToProps)(UnconnectedCoinsSelect);
 
-export default CoinsSelect;
+export default connect(mapStateToProps, mapDispatchToProps)(CoinsSelect);
