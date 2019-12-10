@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import {cmcAPIReducers} from 'cmcAPIReducers';
+import {cmcListCallReducer} from './cmcAPIReducers';
 
 const rootReducer =  combineReducers({
-	cmcAPIReducers,
+	cmcListCallReducer,
 });
 
 export default rootReducer;

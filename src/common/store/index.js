@@ -1,5 +1,5 @@
 import thunkMiddleware from 'redux-thunk';
-import {applyMiddlewares, createStore } from 'redux';
+import {applyMiddleware, createStore } from 'redux';
 import {createLogger} from 'redux-logger'; // Just for testing
 
 import rootReducer from "reducers";
@@ -8,7 +8,7 @@ const loggerMiddleware = createLogger();
 
 const store = createStore(
 	rootReducer,
-	applyMiddlewares(
+	applyMiddleware(
 		thunkMiddleware,
 		loggerMiddleware
 	)

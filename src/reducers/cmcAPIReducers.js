@@ -1,13 +1,13 @@
 import {CMC_API_CALL_TYPES} from 'actions/types'
 
-const initalState = {isRequesting: false};
+const initalState = {coinData: [], isRequesting: false};
 
 /**
  * CMC API call reducer
  * @param state
  * @param action
  */
-const cmcCallsReducers = (state = initalState, action) => {
+const cmcListCallReducer = (state = initalState, action) => {
 	switch (action.type) {
 		case CMC_API_CALL_TYPES.REQUEST:
 			return Object.assign({}, {isRequesting: true});
@@ -16,4 +16,4 @@ const cmcCallsReducers = (state = initalState, action) => {
 	}
 };
 
-export {cmcCallsReducers};
+export {cmcListCallReducer};
