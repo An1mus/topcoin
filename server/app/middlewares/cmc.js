@@ -25,7 +25,7 @@ cmcMiddleWare.get('/', (req, res, next) => {
 			apiResponse = await axios.get(CMC_API, {headers: HEADERS});
 			res.status(200).json(apiResponse.data);
 		} catch (e) {
-			res.status(400).json(apiResponse.data);
+			res.status(400).json(e);
 			res.write(e);
 		} finally {
 			next();

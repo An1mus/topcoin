@@ -1,8 +1,11 @@
 import cmcMiddleWare from "./middlewares/cmc";
 
-const express = require('express');
+import express from 'express';
+import cors from 'cors';
 
 const app = express();
+
+app.use('/', cors());
 
 app.set('views', './server/app/views');
 app.set('view engine', 'ejs');
