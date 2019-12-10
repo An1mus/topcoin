@@ -1,31 +1,30 @@
-import React from "react";
+import React from 'react';
+import {connect} from 'react-redux';
 
-import CoinView from './dashboardCoinView'
+import CoinsTable from './table';
+import CoinsAbsent from './coinsAbsent';
 
-import STUBDATA from 'common/stubdata';
-
-const Dashboard = () => {
-	const columns = ['Rank', 'Name', 'Price', 'Price Change (24h)', 'Market Cap', 'Volume (24h)'];
-
+/**
+ * Dashboard exists because there has to be 2 states: data is filled and empty
+ * @param coinsData {Array[]} - prop from the store
+ */
+const Dashboard = ({coinsData}) => {
 	return (
 		<>
 			<h2>Coins Overview</h2>
-			<table className='table'>
-				<thead className='thead-light'>
-				<tr>
-					{columns.map((col, i) => <th key={i}>{col}</th>)}
-				</tr>
-				</thead>
-				<tbody>
-				{STUBDATA.map(coin => {
-					return (
-						<CoinView key={coin.id} coin={coin}/>
-					)
-				})}
-				</tbody>
-			</table>
+			{
+				coinsData && coinsData.length !== 0
+					? <CoinsTable coinsData={coinsData} />
+					: <CoinsAbsent />
+			}
+
 		</>
 	);
 };
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+	const {coinsData} = state.cmcListCallReducer;
+	return {coinsData};
+};
+
+export default connect(mapStateToProps, null)(Dashboard);
