@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CoinMarketCap middleware by @an1mus</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mt-5 mb-5">Hi 🖖</h1>
+
+    <div class="text-body mb-5">
+        <h3>
+            This is the middleware for calls to CoinMarketCap
+        </h3>
+
+        <p>
+            The thing is, in docs, you may find, that new CoinaMarketCap API refuses front-end calls.
+            For that purpose, I've added this middleware to process calls from the front-end application.
+        </p>
+        <p>
+            The other possible way was to implement an app, based on old API. However,
+            it could involve some unpleasant UX issues, like asking a user to turn off
+            Adblock or displaying incomplete data.
+            It took a bit of time, but coding extra is never extra!
+        </p>
+    </div>
+
+    <div class="text-body mb-5">
+        <h3>From
+            <a href="https://sandbox.coinmarketcap.com/api/v1/#section/Quick-Start-Guide">
+                <b>API docs:</b>
+            </a>
+        </h3>
+        <p>
+            <em>Making HTTP requests on the client side with Javascript is currently
+                prohibited through CORS configuration. This is to protect your API Key which should
+                not be visible to users of your application so your API Key is not stolen.
+                Secure your API Key by routing calls through your own backend service.
+            </em>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
