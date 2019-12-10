@@ -1,3 +1,5 @@
+import cmcMiddleWare from "./middlewares/cmc";
+
 const express = require('express');
 
 const app = express();
@@ -9,4 +11,6 @@ app.get('/', function (req, res) {
 	res.render('index');
 });
 
-module.exports = app;
+app.use('/cmc', cmcMiddleWare);
+
+export default app;
