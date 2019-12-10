@@ -1,6 +1,6 @@
 import {CMC_API_CALL_TYPES} from 'actions/types'
 
-const initalState = {coinData: [], isRequesting: false};
+const initalState = {isRequesting: false};
 
 /**
  * CMC API call reducer
