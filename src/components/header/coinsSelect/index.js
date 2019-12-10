@@ -20,7 +20,7 @@ const UnconnectedCoinsSelect = ({loading, getCoinsData}) => {
 		{value: 100, label: 'First 100 coins'},
 		{value: 'all', label: 'All coins'},
 	];
-	const [selectedOption, selectOption] = useState(options[3]);
+	const [selectedOption, selectOption] = useState('');
 	const handleCoinsSelectChange = (newOption) => {
 		// change selected option
 		selectOption(newOption);
@@ -33,7 +33,7 @@ const UnconnectedCoinsSelect = ({loading, getCoinsData}) => {
 		<>
 			<div className='selectContainer'>
 				<Select
-					className={'coinsSelect'}
+					className={'coinsSelect' + (loading ? ' disabled' : '')}
 					value={selectedOption}
 					onChange={handleCoinsSelectChange}
 					options={options}
@@ -45,11 +45,6 @@ const UnconnectedCoinsSelect = ({loading, getCoinsData}) => {
 	);
 };
 
-UnconnectedCoinsSelect.propTypes = {
-	loading: PropTypes.bool.isRequired,
-	getCoinsData: PropTypes.func.isRequired
-};
-
 const mapStateToProps = (state) => {
 	const {isLoading} = state.cmcListCallReducer;
 	return {isLoading};
@@ -57,6 +52,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
 	getCoinsData: getCMCData
+};
+
+UnconnectedCoinsSelect.defaultProps = {
+	loading: false
+};
+
+UnconnectedCoinsSelect.propTypes = {
+	loading: PropTypes.bool.isRequired,
+	getCoinsData: PropTypes.func.isRequired
 };
 
 const CoinsSelect = connect(mapStateToProps, mapDispatchToProps)(UnconnectedCoinsSelect);

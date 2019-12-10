@@ -1,18 +1,20 @@
-import React from "react";
+import React from 'react';
+import {connect} from 'react-redux';
 
 import CoinsTable from './table';
 import CoinsAbsent from './coinsAbsent';
 
-import STUBDATA from 'common/stubdata';
-
+/**
+ * Dashboard exists because there has to be 2 states: data is filled and empty
+ * @param coinsData {Array[]} - prop from the store
+ */
 const Dashboard = ({coinsData}) => {
-
 	return (
 		<>
 			<h2>Coins Overview</h2>
 			{
-				STUBDATA.length === 0
-					? <CoinsTable coinsData={STUBDATA} />
+				coinsData && coinsData.length !== 0
+					? <CoinsTable coinsData={coinsData} />
 					: <CoinsAbsent />
 			}
 
@@ -20,4 +22,9 @@ const Dashboard = ({coinsData}) => {
 	);
 };
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+	const {coinsData} = state.cmcListCallReducer;
+	return {coinsData};
+};
+
+export default connect(mapStateToProps, null)(Dashboard);
