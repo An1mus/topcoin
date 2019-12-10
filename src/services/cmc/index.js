@@ -11,22 +11,12 @@ import {CMC_API_URL_LISTING} from 'common/apiUrls/cmcUrls';
 
 /**
  * Triggers the middleware to get the first 100 coins data from CMC API.
- * @return {Object}
+ * @param coinsAmount - {Number|String} - Number of coins to return from CoinMarketCap, "all" for all coins
+ * @return {Promise<void|*>}
  */
-const getCoinsListData = async () => {
-	let response;
-
-	try {
-		response = await axios.get(CMC_API_URL_LISTING);
-	} catch (e) {
-		return console.error(e);
-	}
-
-	if(response.status !== 200) {
-		return console.log(response);
-	}
-
-	return response.data;
+const getCoinsListData = async (coinsAmount) => {
+	let {data} = await axios.get(CMC_API_URL_LISTING);
+	return data;
 };
 
 export { getCoinsListData };
