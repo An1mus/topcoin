@@ -2,11 +2,11 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Router, Route} from 'react-router-dom';
 
-import './App.css';
+import './app.css';
 
-import history from 'common/history';
+import history from '../../common/history';
 
-import {getCMCData} from 'actions';
+import {getCMCData} from '../../actions';
 
 import Dashboard from '../dashboard';
 import Liquidity from '../liquidity';
