@@ -1,3 +1,10 @@
+/**
+ *
+ * CoinMarketCap API Service
+ *
+ * This service is triggers the endpoints of the middleware, dedicated to
+ * retrieve data from CoinMarketCap API.
+ */
 import axios from 'axios';
 
 import {CMC_API_URL_LISTING} from 'common/apiUrls/cmcUrls';
@@ -15,7 +22,7 @@ const getCoinsListData = async () => {
 		return console.error(e);
 	}
 
-	if(!response.ok) {
+	if(response.status !== 200) {
 		return console.log(response);
 	}
 

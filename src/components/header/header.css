@@ -1,0 +1,11 @@
+.selectContainer {
+    display: flex;
+}
+
+.selectContainer img {
+    max-height: 2.25rem;
+}
+
+.selectContainer .coinsSelect {
+    width: 12rem;
+}

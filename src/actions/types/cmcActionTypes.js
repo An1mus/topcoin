@@ -1,5 +1,5 @@
 /**
- * Action types for CMC API calls
+ * Action types for CoinMarketCap API calls
  * @type {{*: string}}
  */
 

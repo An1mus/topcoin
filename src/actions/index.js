@@ -3,22 +3,22 @@ import {getCoinsListData} from 'services/cmc';
 
 // TODO: addd query string
 const getCMCData = () => {
-	return dispatch => {
+	return async (dispatch) => {
 		const onRequest = () => {
-			dispatch({type: CMC_API_CALL_TYPES.REQUEST, isRequesting: true});
+			dispatch({type: CMC_API_CALL_TYPES.REQUEST});
 		};
 
 		const onSuccess = (response) => {
-			dispatch({type: CMC_API_CALL_TYPES.SUCCESS, isRequesting: false, coinsData: response});
+			dispatch({type: CMC_API_CALL_TYPES.SUCCESS, coinsData: response});
 		};
 
 		const onFailure = (e) => {
-			dispatch({type: CMC_API_CALL_TYPES.FAILURE, isRequesting: false, error: e});
+			dispatch({type: CMC_API_CALL_TYPES.FAILURE, error: e});
 		};
 
 		onRequest();
 		try {
-			let response = getCoinsListData();
+			let response = await getCoinsListData();
 			onSuccess(response);
 		} catch (e) {
 			onFailure(e);

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from "react-redux";
 import {Router, Route} from 'react-router-dom';
+import Select from 'react-select';
 
 import './App.css';
 
@@ -10,17 +11,28 @@ import {getCMCData} from 'actions';
 
 import Dashboard from 'components/dashboard';
 import Liquidity from 'components/liquidity';
+import Header from '../header';
 
-const UnconnectedApp = ({getCoinsData}) => {
+const UnconnectedApp = ({getCoinsData, isRequesting, coinsData, error}) => {
+
 	return (
 		<div className={'container'}>
-			<h1>The app is ready to go</h1>
 
-			<button onClick={() => getCoinsData()}>Get Coin Data</button>
+			<Header loading={isRequesting} />
 
 			<Router history={history}>
-				<Route exact path={'/'} component={Dashboard}/>
-				<Route exact path={'/liquidity'} component={Liquidity}/>
+				<Route exact
+					   path={'/'}
+					   component={Dashboard}
+					   isRequesting={isRequesting}
+					   coinsData={coinsData}
+				/>
+				<Route
+					exact
+					path={'/liquidity'}
+					component={Liquidity}
+					coinsData={coinsData}
+				/>
 			</Router>
 		</div>
 	);
