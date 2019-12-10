@@ -1,6 +1,7 @@
 import Select from 'react-select';
 import React, {useState} from "react";
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Loader from '../../loader';
 import {getCMCData} from '../../../actions';
@@ -42,6 +43,11 @@ const UnconnectedCoinsSelect = ({loading, getCoinsData}) => {
 			</div>
 		</>
 	);
+};
+
+UnconnectedCoinsSelect.propTypes = {
+	loading: PropTypes.bool.isRequired,
+	getCoinsData: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

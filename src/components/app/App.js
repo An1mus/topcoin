@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import {Router, Route} from 'react-router-dom';
-import Select from 'react-select';
 
 import './App.css';
 
@@ -9,22 +8,21 @@ import history from 'common/history';
 
 import {getCMCData} from 'actions';
 
-import Dashboard from 'components/dashboard';
-import Liquidity from 'components/liquidity';
+import Dashboard from '../dashboard';
+import Liquidity from '../liquidity';
 import Header from '../header';
 
-const UnconnectedApp = ({getCoinsData, isRequesting, coinsData, error}) => {
+const UnconnectedApp = ({coinsData}) => {
 
 	return (
 		<div className={'container'}>
 
-			<Header loading={isRequesting} />
+			<Header />
 
 			<Router history={history}>
 				<Route exact
 					   path={'/'}
 					   component={Dashboard}
-					   isRequesting={isRequesting}
 					   coinsData={coinsData}
 				/>
 				<Route
