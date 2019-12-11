@@ -9,10 +9,10 @@ const cmcMiddleWare = express.Router();
  * to have a look at the code, that is why the token is not hidden
  */
 const HEADERS = {
-	'X-CMC_PRO_API_KEY': 'c9f5efce-aa76-4376-8a70-c93924af1b62'
+	'X-CMC_PRO_API_KEY': '0c820ad8-b596-4012-96b8-85cf946b3288'
 };
 
-const CMC_API = 'https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
+const CMC_API = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
 
 /**
  * Call for the listing API, for 100 coins
