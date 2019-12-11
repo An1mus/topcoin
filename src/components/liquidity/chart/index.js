@@ -8,11 +8,11 @@ const LiquidityChart = ({data}) => (
 		<ResponsiveScatterPlot
 			data={data}
 			margin={{top: 60, right: 140, bottom: 70, left: 90}}
-			xScale={{type: 'linear', min: 0, max: 'auto'}}
+			xScale={{type: 'log', base: 3}}
 			xFormat={function (e) {
 				return e + " kg"
 			}}
-			yScale={{type: 'linear', min: 0, max: 'auto'}}
+			yScale={{type: 'log', base: 2}}
 			yFormat={function (e) {
 				return e + " cm"
 			}}
@@ -42,7 +42,7 @@ const LiquidityChart = ({data}) => (
 					style={{
 						color: node.style.color,
 						background: '#333',
-						padding: '12px 16px',
+						padding: '12px',
 					}}
 				>
 					<strong>
