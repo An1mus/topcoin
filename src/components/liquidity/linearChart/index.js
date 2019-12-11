@@ -1,14 +1,9 @@
 import React from "react";
 import {ResponsiveScatterPlot} from '@nivo/scatterplot';
 
-import {scaleProps, linearScaleProps} from './scaleProps';
-
 import {formatAxisLabel} from '../../../common/formating';
 
-const LiquidityChart = ({data, isLinear}) => {
-	const scalesProps = isLinear
-		? linearScaleProps
-		: {...(scaleProps[data[0].data.length] || scaleProps[50])};
+const LinearChart = ({data}) =>{
 	return (
 		<div className={'chart-container'}>
 			<ResponsiveScatterPlot
@@ -16,7 +11,8 @@ const LiquidityChart = ({data, isLinear}) => {
 				colors={{scheme: 'set2'}}
 				margin={{top: 80, right: 100, bottom: 70, left: 90}}
 				blendMode="multiply"
-				{...scalesProps}
+				xScale={{type: 'linear'}}
+				yScale={{type: 'linear'}}
 				axisTop={null}
 				axisRight={null}
 				axisLeft={{
@@ -67,4 +63,4 @@ const LiquidityChart = ({data, isLinear}) => {
 	);
 };
 
-export default LiquidityChart;
+export default LinearChart;

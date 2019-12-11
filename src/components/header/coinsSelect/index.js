@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import Loader from '../../loader';
 import {getCMCData} from '../../../actions';
 
+import './coinsSelect.css';
+
 /**
  * An element that triggers middleware and shows if data is loaded
  * @param isRequesting {Boolean} - describes if data is isRequesting, to show/hide loading gif
