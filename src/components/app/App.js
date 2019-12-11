@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Router, Route} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 
 import './app.css';
 
@@ -16,21 +16,22 @@ const UnconnectedApp = ({coinsData}) => {
 
 	return (
 		<div className={'container'}>
-
-			<Header />
-
 			<Router history={history}>
-				<Route exact
-					   path={'/'}
-					   component={Dashboard}
-					   coinsData={coinsData}
-				/>
-				<Route
-					exact
-					path={'/liquidity'}
-					component={Liquidity}
-					coinsData={coinsData}
-				/>
+				<Header/>
+
+				<Switch>
+					<Route exact
+						   path={'/'}
+						   component={Dashboard}
+						   coinsData={coinsData}
+					/>
+					<Route
+						exact
+						path={'/liquidity'}
+						component={Liquidity}
+						coinsData={coinsData}
+					/>
+				</Switch>
 			</Router>
 		</div>
 	);
