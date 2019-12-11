@@ -6,6 +6,7 @@
  * @return {string} - formatted currency
  */
 const formatCrypto = (currency, decimals = 2) => {
+	// en-US locale corresponds to the requirement
 	return Number((currency).toFixed(decimals)).toLocaleString('en-US')
 };
 
@@ -15,9 +16,13 @@ const formatCrypto = (currency, decimals = 2) => {
  * @return {String} - resulting label
  */
 function formatAxisLabel(value) {
-	var suffixes = ["", "k", "m", "b", "t"];
-	var suffixNum = Math.floor(("" + value).length / 3);
-	var shortValue = parseFloat((suffixNum != 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(2));
+	const suffixes = ["", "t", "m", "b", "t"];
+	const suffixNum = Math.floor(("" + value).length / 3);
+	let shortValue = parseFloat((suffixNum != 0 ?
+		(value / Math.pow(1000, suffixNum)) :
+		value).toPrecision(2)
+	);
+
 	if (shortValue % 1 != 0) {
 		shortValue = shortValue.toFixed(1);
 	}
