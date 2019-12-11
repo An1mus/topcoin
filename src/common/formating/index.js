@@ -16,7 +16,7 @@ const formatCrypto = (currency, decimals = 2) => {
  * @return {String} - resulting label
  */
 function formatAxisLabel(value) {
-	const suffixes = ["", "t", "m", "b", "t"];
+	const suffixes = ["", "t", "m", "b", "tr"];
 	const suffixNum = Math.floor(("" + value).length / 3);
 	let shortValue = parseFloat((suffixNum != 0 ?
 		(value / Math.pow(1000, suffixNum)) :
