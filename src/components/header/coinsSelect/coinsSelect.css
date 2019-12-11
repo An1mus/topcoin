@@ -1,0 +1,5 @@
+.disabled {
+    transition: all .3s;
+    pointer-events: none;
+    opacity: .5;
+}
