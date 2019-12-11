@@ -19,47 +19,44 @@ const LiquidityChart = ({data}) => (
 			blendMode="multiply"
 			axisTop={null}
 			axisRight={null}
-			axisBottom={{
-				orient: 'bottom',
-				tickSize: 5,
-				tickPadding: 5,
-				tickRotation: 0,
-				legend: 'weight',
-				legendPosition: 'middle',
-				legendOffset: 46
-			}}
 			axisLeft={{
 				orient: 'left',
 				tickSize: 5,
 				tickPadding: 5,
 				tickRotation: 0,
-				legend: 'size',
+				legend: 'Volume',
 				legendPosition: 'middle',
 				legendOffset: -60
 			}}
-			legends={[
-				{
-					anchor: 'bottom-right',
-					direction: 'column',
-					justify: false,
-					translateX: 130,
-					translateY: 0,
-					itemWidth: 100,
-					itemHeight: 12,
-					itemsSpacing: 5,
-					itemDirection: 'left-to-right',
-					symbolSize: 12,
-					symbolShape: 'circle',
-					effects: [
-						{
-							on: 'hover',
-							style: {
-								itemOpacity: 1
-							}
-						}
-					]
-				}
-			]}
+			axisBottom={{
+				orient: 'bottom',
+				tickSize: 5,
+				tickPadding: 5,
+				tickRotation: 0,
+				legend: 'Market Cap',
+				legendPosition: 'middle',
+				legendOffset: 46
+			}}
+			tooltip={({node}) => (
+				<div
+					style={{
+						color: node.style.color,
+						background: '#333',
+						padding: '12px 16px',
+					}}
+				>
+					<strong>
+						{node.data.name}
+					</strong>
+					<br/>
+					Market Cap: {node.data.marketCap}
+					<br/>
+					24h Volume: {node.data.volume}
+					<br/>
+					Absolute price change: {node.data.priceChange}
+					<br/>
+				</div>
+			)}
 		/>
 	</div>
 );
