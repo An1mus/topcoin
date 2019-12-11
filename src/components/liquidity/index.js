@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import LiquidityChart from './chart';
 
 import {formatCrypto} from '../../common/formating';
+
+import ChartContainer from './chartContainer';
 
 class Liquidity extends React.Component {
 	constructor(props) {
@@ -10,21 +11,20 @@ class Liquidity extends React.Component {
 
 		this.state = {
 			chartData: [],
-			isRequesting: false
+			minmaxValues: {},
+			isLinear: false,
 		};
 	};
 
 	/***
 	 * @method getDerivedStateFromProps - defines if the chart should be updated, since useEffect
 	 * hook was giving a warning for async component rendering
-	 * @param coinsData - coins data from props
-	 * @param isRequesting - state of the api request from props
+	 * @param props - nextProps of the app
 	 * @param state - nextState of the app
 	 * @return {null} - returns null when there is no updates for the current state
 	 */
-	static getDerivedStateFromProps({coinsData, isRequesting}, state) {
-		if(!coinsData && !isRequesting) return null;
-		if(isRequesting) return {isRequesting};
+	static getDerivedStateFromProps({coinsData}, state) {
+		if (!coinsData) return null;
 
 		let parsedChartData = [];
 
@@ -44,26 +44,42 @@ class Liquidity extends React.Component {
 					}
 				})]
 			}];
+
 		}
 
 		return {chartData: parsedChartData};
 	}
 
+	swapChart = () => {
+		this.setState((prevState) => ({isLinear: !prevState.isLinear}));
+	};
+
 	render() {
-		const {chartData, isRequesting} = this.state;
+		const {chartData, isLinear} = this.state;
+
 		return (
 			<>
-				<h2>Liquidity</h2>
-				<LiquidityChart data={chartData}/>
+				<div className="d-flex justify-content-between">
+					<h2>Liquidity</h2>
+
+					<button
+						className={'btn btn-primary'}
+						type="button"
+						onClick={() => this.swapChart()}
+					>
+						Switch to {isLinear ? 'logarithmic' : 'linear'}
+					</button>
+				</div>
+				<ChartContainer chartData={chartData} isLinear={isLinear}/>
 			</>
 		)
 	}
 }
 
 const mapStateToProps = (state) => {
-	const {coinsData, isRequesting} = state.cmcListCallReducer;
+	const {coinsData} = state.cmcListCallReducer;
 
-	return {coinsData, isRequesting};
+	return {coinsData};
 };
 
 export default connect(mapStateToProps)(Liquidity);
