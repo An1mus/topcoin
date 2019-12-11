@@ -2,8 +2,6 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Router, Route, Switch} from 'react-router-dom';
 
-import './app.css';
-
 import history from '../../common/history';
 
 import {getCMCData} from '../../actions';
