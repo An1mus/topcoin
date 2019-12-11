@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import LiquidityChart from './chart';
-import chartStubData from "./chart/stub";
+
+import {formatCrypto} from '../../common/formating';
 
 class Liquidity extends React.Component {
 	constructor(props) {
@@ -34,11 +35,12 @@ class Liquidity extends React.Component {
 					return {
 						id: el.id,
 						name: el.name,
-						marketCap: el.quote.USD.market_cap,
-						volume: el.quote.USD.volume_24h,
-						priceChange: Math.abs(el.quote.USD.percent_change_24h),
+						marketCap: '$' + formatCrypto(el.quote.USD.market_cap, 3),
+						volume: '$' + formatCrypto(el.quote.USD.volume_24h, 3),
+						priceChange: formatCrypto(Math.abs(el.quote.USD.percent_change_24h)) + '%',
 						x: el.quote.USD.market_cap,
 						y: el.quote.USD.volume_24h,
+						z: Math.abs(el.quote.USD.percent_change_24h)
 					}
 				})]
 			}];
