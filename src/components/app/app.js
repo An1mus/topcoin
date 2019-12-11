@@ -1,14 +1,13 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Router, Route, Switch} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 
 import history from '../../common/history';
 
 import {getCMCData} from '../../actions';
 
-import Dashboard from '../dashboard';
-import Liquidity from '../liquidity';
 import Header from '../header';
+import Routes from '../routes';
 
 const UnconnectedApp = ({coinsData}) => {
 
@@ -17,19 +16,7 @@ const UnconnectedApp = ({coinsData}) => {
 			<Router history={history}>
 				<Header/>
 
-				<Switch>
-					<Route exact
-						   path={'/'}
-						   component={Dashboard}
-						   coinsData={coinsData}
-					/>
-					<Route
-						exact
-						path={'/liquidity'}
-						component={Liquidity}
-						coinsData={coinsData}
-					/>
-				</Switch>
+				<Routes coinsData={coinsData}/>
 			</Router>
 		</div>
 	);
