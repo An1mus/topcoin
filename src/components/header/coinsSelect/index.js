@@ -19,7 +19,7 @@ const CoinsSelect = ({isRequesting, getCoinsData}) => {
 		{value: 10, label: 'First 10 coins'},
 		{value: 20, label: 'First 20 coins'},
 		{value: 50, label: 'First 50 coins'},
-		{value: 100, label: 'All 100 coins'}, // not actually all, but those I can get
+		{value: 100, label: 'All 100 coins'}, // not actually all, but those I should get
 	];
 	const [selectedOption, selectOption] = useState('');
 	const handleCoinsSelectChange = (newOption) => {
