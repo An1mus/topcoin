@@ -5,8 +5,7 @@ import ChartAbsent from "../chartAbsent";
 import './chart.css'
 
 const ChartContainer = ({chartData, isLinear}) => {
-	const charDataLoaded = !!chartData && chartData.length;
-
+	const charDataLoaded = !!chartData[0] && !!chartData[0].data && chartData[0].data.length > 0;
 	return (
 		<>
 			{

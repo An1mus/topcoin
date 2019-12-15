@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import CoinsTable from './table';
 import CoinsAbsent from './coinsAbsent';
+import CoinsTable from "./table";
 
 /**
  * Dashboard exists because there has to be 2 states: data is filled and empty
@@ -14,7 +14,7 @@ const Dashboard = ({coinsData}) => {
 			<h2>Coins Overview</h2>
 			{
 				coinsData && coinsData.length !== 0
-					? <CoinsTable coinsData={coinsData} />
+					? <CoinsTable coinsData={coinsData}/>
 					: <CoinsAbsent />
 			}
 
