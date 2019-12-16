@@ -25,3 +25,6 @@ yarn-error.log*
 #Webstorm
 /.idea/workspace.xml
 /.idea
+
+#API KEY ignore
+server/config

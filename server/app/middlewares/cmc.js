@@ -1,16 +1,15 @@
 import express from 'express';
 import axios from 'axios';
 import rp from 'request-promise';
+import {API_KEY_HEADER} from '../../config';
 
 const cmcMiddleWare = express.Router();
 
+
 /**
- * I would host this middleware somewhere, but It could be interesting for you
- * to have a look at the code, that is why the token is not hidden
+ * The API_KEY_HEADER uses form : {'X-CMC_PRO_API_KEY': String};
  */
-const HEADERS = {
-	'X-CMC_PRO_API_KEY': '0c820ad8-b596-4012-96b8-85cf946b3288'
-};
+const HEADERS = Object.assign({}, API_KEY_HEADER);
 
 const CMC_API = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
 
