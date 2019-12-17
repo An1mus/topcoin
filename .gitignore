@@ -27,4 +27,5 @@ yarn-error.log*
 /.idea
 
 #API KEY ignore
-server/config
+/server/config
+/server/config/index.js
